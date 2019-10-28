@@ -61,6 +61,12 @@ function execute(command) {
     stack.push(a);
     return stack.push(a);
   }
+  else if (command === '~') {
+    a = stack.pop();
+    b = stack.pop();
+    stack.push(a);
+    return stack.push(b);
+  }
   else {
     throw new TypeError("Command not defined!!!!!!!!!!!!!!!!!!!");
   }
