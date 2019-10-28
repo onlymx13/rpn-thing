@@ -3,7 +3,7 @@ var stack; //TODO: make stack local
 function runCode() {
   var commandNum = 0;
   code = document.getElementById('code').value.split('');
-  stack = document.getElementById('input').value.split('\n').filter(n => n !== '').forEach(element => Number(element)); // Input is just the original stack
+  stack = document.getElementById('input').value.split('\n').filter(n =>  n != '').map(x => Number(x)); // Input is just the original stack
   while (true) {
     document.getElementById('stack').innerHTML = stack;
     if (commandNum >= code.length) break;
@@ -40,6 +40,10 @@ function execute(command) {
   }
   else if (command === '>') {
      return stack.push(Number(stack.pop() < stack.pop()));
+  }
+  else if (command === '%') {
+    var a = stack.pop();
+    return stack.push(stack.pop() % a);
   }
   else {
     throw new TypeError("Command not defined!!!!!!!!!!!!!!!!!!!");
