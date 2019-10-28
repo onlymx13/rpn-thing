@@ -1,2 +1,2 @@
 # rpn-thing
-my hands are typing words
+A programming language in active development (though knowing me if it's November 2019 or later it probably isn't anymore).
