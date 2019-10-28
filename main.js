@@ -1,0 +1,33 @@
+var stack[];
+
+function runCode() {
+var commandNum = 0;
+  code = document.getElementById('code').innerHTML.split('');
+  while (true) {
+    document.getElementById('stack').innerHTML = stack;
+    if (commandNum >= code.length) break;
+    command = code[commandNum++];
+    execute(command);
+  }
+}
+
+function execute(command) {
+  if (Number(command) || command === '0') {
+    return stack.push(Number(command));
+  }
+  else if (command === '+') {
+    return stack.push(stack.pop() + stack.pop());
+  }
+  else if (command === '-') {
+    return stack.push(stack.pop() - stack.pop());
+  }
+  else if (command === '*') {
+    return stack.push(stack.pop() * stack.pop());
+  }
+  else if (command === '/') {
+    return stack.push(stack.pop() / stack.pop());
+  }
+  else {
+    throw new TypeError("Command not defined!!!!!!!!!!!!!!!!!!!");
+  }
+}
