@@ -2,8 +2,8 @@ var stack; //TODO: make stack local
 
 function runCode() {
   var commandNum = 0;
-  stack = [];
   code = document.getElementById('code').value.split('');
+  stack = document.getElementById('input').value.split('\n'); // Input is just the original stack
   while (true) {
     document.getElementById('stack').innerHTML = stack;
     if (commandNum >= code.length) break;
