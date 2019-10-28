@@ -1,7 +1,8 @@
-var stack = [];
+var stack; //TODO: make stack local
 
 function runCode() {
-var commandNum = 0;
+  var commandNum = 0;
+  stack = [];
   code = document.getElementById('code').value.split('');
   while (true) {
     document.getElementById('stack').innerHTML = stack;
