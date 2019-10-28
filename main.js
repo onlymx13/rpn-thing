@@ -28,6 +28,19 @@ function execute(command) {
   else if (command === '/') {
     return stack.push(1 / (stack.pop() / stack.pop()));
   }
+  else if (command === '^') {
+    var a = stack.pop();
+    return stack.push(Math.pow(stack.pop(),a));
+  }
+  else if (command === '=') {
+     return stack.push(Number(stack.pop() === stack.pop()));
+  }
+  else if (command === '<') {
+     return stack.push(Number(stack.pop() > stack.pop()));
+  }
+  else if (command === '>') {
+     return stack.push(Number(stack.pop() < stack.pop()));
+  }
   else {
     throw new TypeError("Command not defined!!!!!!!!!!!!!!!!!!!");
   }
