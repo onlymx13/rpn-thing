@@ -20,13 +20,13 @@ function execute(command) {
     return stack.push(stack.pop() + stack.pop());
   }
   else if (command === '-') {
-    return stack.push(stack.pop() - stack.pop());
+    return stack.push(-(stack.pop() - stack.pop()));
   }
   else if (command === '*') {
     return stack.push(stack.pop() * stack.pop());
   }
   else if (command === '/') {
-    return stack.push(stack.pop() / stack.pop());
+    return stack.push(1 / (stack.pop() / stack.pop()));
   }
   else {
     throw new TypeError("Command not defined!!!!!!!!!!!!!!!!!!!");
