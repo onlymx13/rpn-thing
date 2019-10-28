@@ -16,58 +16,64 @@ function runCode() {
     document.getElementById('stack').innerHTML = stack;
     if (commandNum >= code.length) break;
     command = code[commandNum++];
-    execute(command);
+    commandNum = execute(command, commandNum);
   }
 }
 
-function execute(command) {
+function execute(command, num) {
   if (Number(command) || command === '0') {
-    return stack.push(Number(command));
+    stack.push(Number(command));
   }
   else if (command === '+') {
-    return stack.push(stack.pop() + stack.pop());
+    stack.push(stack.pop() + stack.pop());
   }
   else if (command === '-') {
-    return stack.push(-(stack.pop() - stack.pop()));
+    stack.push(-(stack.pop() - stack.pop()));
   }
   else if (command === '*') {
-    return stack.push(stack.pop() * stack.pop());
+    stack.push(stack.pop() * stack.pop());
   }
   else if (command === '/') {
-    return stack.push(1 / (stack.pop() / stack.pop()));
+    stack.push(1 / (stack.pop() / stack.pop()));
   }
   else if (command === '^') {
     var a = stack.pop();
-    return stack.push(Math.pow(stack.pop(),a));
+    stack.push(Math.pow(stack.pop(),a));
   }
   else if (command === '=') {
-     return stack.push(Number(stack.pop() === stack.pop()));
+     stack.push(Number(stack.pop() === stack.pop()));
   }
   else if (command === '<') {
-     return stack.push(Number(stack.pop() > stack.pop()));
+     stack.push(Number(stack.pop() > stack.pop()));
   }
   else if (command === '>') {
-     return stack.push(Number(stack.pop() < stack.pop()));
+     stack.push(Number(stack.pop() < stack.pop()));
   }
   else if (command === '%') {
     var a = stack.pop();
-    return stack.push(stack.pop() % a);
+    stack.push(stack.pop() % a);
   }
   else if (command === '!') {
-    return stack.push(factorial(stack.pop()));
+    stack.push(factorial(stack.pop()));
   }
   else if (command === '"') {
     var a = stack.pop();
     stack.push(a);
-    return stack.push(a);
+    stack.push(a);
   }
   else if (command === '~') {
     a = stack.pop();
     b = stack.pop();
     stack.push(a);
-    return stack.push(b);
+    stack.push(b);
+  }
+  else if (command === '?') {
+    if (!stack.pop()) {
+      num++;
+    }
   }
   else {
     throw new TypeError("Command not defined!!!!!!!!!!!!!!!!!!!");
   }
+  return num;
 }
