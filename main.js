@@ -1,5 +1,13 @@
 var stack; //TODO: make stack local
 
+function factorial(n) {
+  if (n === 0) {
+    return 1;
+  } else {
+    return n * factorial(n - 1);
+  }
+}
+
 function runCode() {
   var commandNum = 0;
   code = document.getElementById('code').value.split('');
@@ -44,6 +52,14 @@ function execute(command) {
   else if (command === '%') {
     var a = stack.pop();
     return stack.push(stack.pop() % a);
+  }
+  else if (command === '!') {
+    return stack.push(factorial(stack.pop()));
+  }
+  else if (command === '"') {
+    var a = stack.pop();
+    stack.push(a);
+    return stack.push(a);
   }
   else {
     throw new TypeError("Command not defined!!!!!!!!!!!!!!!!!!!");
