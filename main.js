@@ -1,8 +1,8 @@
-var stack[];
+var stack = [];
 
 function runCode() {
 var commandNum = 0;
-  code = document.getElementById('code').innerHTML.split('');
+  code = document.getElementById('code').value.split('');
   while (true) {
     document.getElementById('stack').innerHTML = stack;
     if (commandNum >= code.length) break;
