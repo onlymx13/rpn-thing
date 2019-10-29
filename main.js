@@ -11,16 +11,17 @@ function factorial(n) {
 function runCode() {
   var commandNum = 0;
   code = document.getElementById('code').value.split('');
+  document.getElementById('error').innerHTML = '';
   stack = document.getElementById('input').value.split('\n').filter(n =>  n != '').map(x => Number(x)); // Input is just the original stack
   while (true) {
     document.getElementById('stack').innerHTML = stack;
     if (commandNum >= code.length) break;
     command = code[commandNum++];
-    commandNum = execute(command, commandNum);
+    commandNum = execute(command, commandNum, code);
   }
 }
 
-function execute(command, num) {
+function execute(command, num, cod) {
   if (Number(command) || command === '0') {
     stack.push(Number(command));
   }
@@ -68,12 +69,17 @@ function execute(command, num) {
     stack.push(b);
   }
   else if (command === '?') {
-    if (!stack.pop()) {
-      num++;
+    if (stack.pop()) {
+      num = cod.lastIndexOf('¿', num); // search backwards for the first ¿ before a ?
+      if (num === -1) error("'?' has no matching '¿'!"
     }
   }
-  else {
-    throw new TypeError("Command not defined!!!!!!!!!!!!!!!!!!!");
+  else if (!["¿"].includes(command)) { // don't error on nops
+    error("Command " + command + " is not defined!!!!!!!!!!!!!!!!!!!");
   }
   return num;
+}
+
+function error(err) {
+  document.getElementById('error').innerHTML += error + "\n";
 }
