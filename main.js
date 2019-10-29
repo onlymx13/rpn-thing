@@ -13,15 +13,19 @@ function runCode() {
   code = document.getElementById('code').value.split('');
   document.getElementById('error').innerHTML = '';
   stack = document.getElementById('input').value.split('\n').filter(n =>  n != '').map(x => Number(x)); // Input is just the original stack
-  while (true) {
-    document.getElementById('stack').innerHTML = stack;
-    if (commandNum >= code.length) break;
-    command = code[commandNum++];
-    commandNum = execute(command, commandNum, code);
-  }
+  function count() {
+        for (var j = 0; j < 9; j++) { // 10 instructions, then a frame drawn
+            if (commandNum < code.length) {
+              commandNum = execute(code[commandNum++], commandNum, code);
+            }
+        }
+        if (commandNum < code.length) requestAnimationFrame(count);
+    }
+    if (commandNum < code.length) requestAnimationFrame(count);
 }
 
 function execute(command, num, cod) {
+  document.getElementById('stack').innerHTML = stack;
   if (Number(command) || command === '0') {
     stack.push(Number(command));
   }
