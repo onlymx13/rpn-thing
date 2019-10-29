@@ -71,7 +71,7 @@ function execute(command, num, cod) {
   else if (command === '?') {
     if (stack.pop()) {
       num = cod.lastIndexOf('¿', num); // search backwards for the first ¿ before a ?
-      if (num === -1) error("'?' has no matching '¿'!"
+      if (num === -1) error("'?' has no matching '¿'!");
     }
   }
   else if (!["¿"].includes(command)) { // don't error on nops
