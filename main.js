@@ -85,5 +85,5 @@ function execute(command, num, cod) {
 }
 
 function error(err) {
-  document.getElementById('error').innerHTML += error + "\n";
+  document.getElementById('error').innerHTML += err + "\n";
 }
