@@ -16,6 +16,7 @@ function runCode() {
   function count() {
     for (var j = 0; j < 9; j++) { // 10 instructions, then a frame drawn
       if (commandNum < code.length) {
+        error(commandNum);
         commandNum = execute(code[commandNum++], commandNum, code);
       }
     }
