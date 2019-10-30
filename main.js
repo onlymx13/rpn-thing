@@ -15,13 +15,13 @@ function runCode() {
   stack = document.getElementById('input').value.split('\n').filter(n =>  n != '').map(x => Number(x)); // Input is just the original stack
   function count() {
     for (var j = 0; j < 9; j++) { // 10 instructions, then a frame drawn
-      if (commandNum <= code.length) {
+      if (commandNum < code.length) {
         commandNum = execute(code[commandNum++], commandNum, code);
       }
     }
-    if (commandNum <= code.length) requestAnimationFrame(count);
+    if (commandNum < code.length) requestAnimationFrame(count);
   }
-  if (commandNum <= code.length) requestAnimationFrame(count);
+  if (commandNum < code.length) requestAnimationFrame(count);
 }
 
 function execute(command, num, cod) {
