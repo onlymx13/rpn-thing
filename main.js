@@ -17,7 +17,6 @@ function runCode() {
     document.getElementById('stack').innerHTML = stack;
     for (var j = 0; j < 9; j++) { // 10 instructions, then a frame drawn
       if (commandNum < code.length) {
-        error(commandNum);
         commandNum = execute(code[commandNum++], commandNum, code);
         document.getElementById('stack').innerHTML = stack;
       }
@@ -75,7 +74,7 @@ function execute(command, num, cod) {
     stack.push(b);
   }
   else if (command === '?') {
-    if (stack.pop()) {
+    if (stack.pop()) { // pop and jump conditionally
       num = cod.lastIndexOf('¿', num); // search backwards for the first ¿ before a ?
       error("Num set to " + num);
       if (num === -1) error("'?' has no matching '¿'!");
@@ -88,5 +87,5 @@ function execute(command, num, cod) {
 }
 
 function error(err) {
-  document.getElementById('error').innerHTML += err + "\n";
+  document.getElementById('error').innerHTML += err + "<br>";
 }
