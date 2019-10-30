@@ -79,7 +79,7 @@ function execute(command, num, cod) {
     }
   }
   else if (!["¿"].includes(command)) { // don't error on nops
-    error("Command " + command + " is not defined!!!!!!!!!!!!!!!!!!!");
+    error("Command " + command + " is not defined!!!!!!!!!!!!!!!!!!! (at position " + num + ")");
   }
   return num;
 }
