@@ -75,6 +75,7 @@ function execute(command, num, cod) {
   else if (command === '?') {
     if (stack.pop()) {
       num = cod.lastIndexOf('¿', num); // search backwards for the first ¿ before a ?
+      error("Num set to " + num);
       if (num === -1) error("'?' has no matching '¿'!");
     }
   }
