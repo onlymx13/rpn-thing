@@ -14,10 +14,12 @@ function runCode() {
   document.getElementById('error').innerHTML = '';
   stack = document.getElementById('input').value.split('\n').filter(n =>  n != '').map(x => Number(x)); // Input is just the original stack
   function count() {
+    document.getElementById('stack').innerHTML = stack;
     for (var j = 0; j < 9; j++) { // 10 instructions, then a frame drawn
       if (commandNum < code.length) {
         error(commandNum);
         commandNum = execute(code[commandNum++], commandNum, code);
+        document.getElementById('stack').innerHTML = stack;
       }
     }
     if (commandNum < code.length) requestAnimationFrame(count);
@@ -26,7 +28,6 @@ function runCode() {
 }
 
 function execute(command, num, cod) {
-  document.getElementById('stack').innerHTML = stack;
   if (Number(command) || command === '0') {
     stack.push(Number(command));
   }
