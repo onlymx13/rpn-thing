@@ -90,11 +90,12 @@ function execute(command, num, cod) {
     stack.unshift(stack.pop());
   }
   else if (!["¿","¡"].includes(command)) { // don't error on nops
-    error("Command " + command + " is not defined!!!!!!!!!!!!!!!!!!! (at position " + num + ")");
+    return error("Command " + command + " is not defined!!!!!!!!!!!!!!!!!!! (at position " + num + ")");
   }
   return num;
 }
 
 function error(err) {
   document.getElementById('error').innerHTML += err + "<br>";
+  return Infinity;
 }
