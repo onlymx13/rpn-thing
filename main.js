@@ -83,6 +83,12 @@ function execute(command, num, cod) {
      num = cod.lastIndexOf('¡', num); // ! jumps unconditionally!
      if (num === -1) error("'!' has no matching '¡'!"); 
   }
+  else if (command === '«') {
+    stack.push(stack.shift());
+  }
+  else if (command === '»') {
+    stack.unshift(stack.pop());
+  }
   else if (!["¿","¡"].includes(command)) { // don't error on nops
     error("Command " + command + " is not defined!!!!!!!!!!!!!!!!!!! (at position " + num + ")");
   }
