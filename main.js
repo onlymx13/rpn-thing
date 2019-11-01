@@ -89,6 +89,9 @@ function execute(command, num, cod) {
   else if (command === '»') {
     stack.unshift(stack.pop());
   }
+  else if (command === '#') {
+    stack.push(stack.length);
+  }
   else if (!["¿","¡"].includes(command)) { // don't error on nops
     return error("Command " + command + " is not defined!!!!!!!!!!!!!!!!!!! (at position " + num + ")");
   }
