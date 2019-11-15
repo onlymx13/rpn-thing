@@ -9,9 +9,7 @@ function printStack(stack) {
   if (stackModeNumbers) {
     return stack;
   } else {
-    return stack.forEach(function(element) {
-      return String.fromCharCode(element);
-    }).join("");
+    return stack.map(element => String.fromCharCode(element)).join("");
   }
 }
 
