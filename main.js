@@ -3,7 +3,7 @@ var stackModeNumbers = true;
 
 function toggleStackMode() {
   stackModeNumbers = !stackModeNumbers;
-  document.getElementById('stack') = printStack();
+  document.getElementById('stack').innerHTML = printStack();
 }
 
 function printStack(stack) {
