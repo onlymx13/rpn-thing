@@ -1,4 +1,19 @@
 var stack; //TODO: make stack local
+var stackModeNumbers = true;
+
+function toggleStackMode() {
+  stackModeNumbers = !stackModeNumbers;
+}
+
+function printStack(stack) {
+  if (stackModeNumbers) {
+    return stack;
+  } else {
+    return stack.forEach(function(element) {
+      return String.fromCharCode(element);
+    }).join("");
+  }
+}
 
 function factorial(n) {
   if (n === 0) {
@@ -18,7 +33,7 @@ function runCode() {
     for (var j = 0; j < 9; j++) { // 10 instructions, then a frame drawn
       if (commandNum < code.length) {
         commandNum = execute(code[commandNum++], commandNum, code);
-        document.getElementById('stack').innerHTML = stack;
+        document.getElementById('stack').innerHTML = printStack(stack);
       }
     }
     if (commandNum < code.length) requestAnimationFrame(count);
