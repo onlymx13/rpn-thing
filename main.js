@@ -15,7 +15,7 @@ function printStack(stack) {
 }
 
 function factorial(n) {
-  if (n === 0) {
+  if (n === 0 || Number.isNaN(n)) { // built in NaN checking. As a failsafe, NaN! = 1.
     return 1;
   } else {
     return n * factorial(n - 1);
